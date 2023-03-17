@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vue-Boolzapp</title>
+</head>
+
+<body>
+    <main>
+        <div class="main-container">
+            <div class="main-container-top"></div>
+            <div class="main-container-bottom"></div>
+
+            <!-- container web app -->
+            <div id="app" class="whatsapp-container">
+                <!-- header -->
+                <div class="wp-header">
+                    <!-- left column user -->
+                    <div class="user-col">
+                        <div class="user-col-left">
+                            <div class="avatar">
+                                <img src="img/avatar_io.jpg" alt=" ">
+                            </div>
+                            <div class="user-name">
+                                <p class="name">Giulia (tu)</p>
+                            </div>
+                        </div>
+                        <div class="user-col-right">
+                            <div class="user-buttons">
+                                <i class="fas fa-circle-notch"></i>
+                                <i class="fas fa-comment-alt"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right column -->
+                    <div class="friend-col">
+                        <div class="friend-col-left">
+                            <div class="avatar">
+                                <img src="img/avatar_1.jpg" alt="avatar 1">
+                            </div>
+                            <div class="friend-name">
+                                <p class="name">{{ contacts[0].name }}</p>
+                                <p class="last-access">Ultimo accesso oggi alle 12:00</p>
+                            </div>
+                        </div>
+                        <div class="friend-col-right">
+                            <div class="user-buttons">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- main -->
+                <div class="wp-main">
+                    <!-- main left column -->
+                    <div class="main-left-col">
+                        <div class="notifications">
+                            <div class="bell-wrapper">
+                                <i class="fas fa-bell-slash"></i>
+                            </div>
+                            <div class="friend-name">
+                                <p class="name">Ricevi notifiche di nuovi messaggi</p>
+                                <p class="notification-activation">Attiva notifiche desktop</p>
+                            </div>
+                        </div>
+
+                        <div class="search">
+                            <label for="searchbox"><i class="fas fa-search"></i></label>
+                            <input name="searchbox" type="text" class="search-box" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+
+                        <div class="messages-to">
+                            <div v-for="(contact, index) in contacts" class="message-to-friend">
+                                <div class="friend-avatar">
+                                    <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                                </div>
+                                <div class="friend-text">
+                                    <p class="name">{{ contact.name }}</p>
+                                    <p class="last-message">{{ getLastMessage(index) }}</p>
+                                </div>
+                                <div class="last-message-time">{{ getLastDate(index) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- main right column -->
+                    <div class="main-right-col">
+                        
+                        <div class="chat">
+                            <div v-for="(message, index) in contacts[0].messages" class="chat-row">
+                                <div class="chat-message" :class="(message.status == 'sent') ? 'sent' : 'received'">
+                                    <p>{{ message.text }}</p>
+                                    <p class="chat-date">{{ message.date }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="chat-input">
+                            <div class="smile">
+                                <i class="far fa-smile"></i>
+                            </div>
+
+                            <input class="chat-input-text" type="text" placeholder="Scrivi un messaggio">
+
+                            <div class="microphone">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
