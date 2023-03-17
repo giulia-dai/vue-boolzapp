@@ -49,10 +49,10 @@
                     <div class="friend-col">
                         <div class="friend-col-left">
                             <div class="avatar">
-                                <img src="img/avatar_1.jpg" alt="avatar 1">
+                                <img :src="contacts[indexContact].avatar">
                             </div>
                             <div class="friend-name">
-                                <p class="name">{{ contacts[0].name }}</p>
+                                <p class="name">{{contacts[indexContact].name}}</p>
                                 <p class="last-access">Ultimo accesso oggi alle 12:00</p>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="messages-to">
-                            <div v-for="(contact, index) in contacts" class="message-to-friend">
+                            <div v-for="(contact, index) in contacts" class="message-to-friend" @click= "changeContact(index)">
                                 <div class="friend-avatar">
                                     <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                                 </div>
@@ -101,7 +101,7 @@
                     <div class="main-right-col">
                         
                         <div class="chat">
-                            <div v-for="(message, index) in contacts[0].messages" class="chat-row">
+                            <div v-for="(message, index) in contacts[indexContact].messages" class="chat-row">
                                 <div class="chat-message" :class="(message.status == 'sent') ? 'sent' : 'received'">
                                     <p>{{ message.text }}</p>
                                     <p class="chat-date">{{ message.date }}</p>

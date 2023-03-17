@@ -1,6 +1,7 @@
 const wpmain = new Vue({
     el: '#app',
     data: {
+        indexContact: 0,
         contacts: [
             {
                 name: "Michele",
@@ -115,7 +116,7 @@ const wpmain = new Vue({
                     },
                     {
                         date: '10/01/2020 15:50:00',
-                        message: 'Non ancora',
+                        text: 'Non ancora',
                         status: 'received'
                     },
                     {
@@ -161,7 +162,7 @@ const wpmain = new Vue({
                     {
                         date: '10/01/2020 15:51:00',
                         text: 'OK!!',
-                        status: 'received'
+                        status: 'sent'
                     },
 
                 ],
@@ -183,6 +184,9 @@ const wpmain = new Vue({
             let lastMessageDate = this.contacts[index].messages[lastMessage].date;
 
             return lastMessageDate;
+        },
+        changeContact(index) {
+            this.indexContact = index;
         }
     },
 });
