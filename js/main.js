@@ -2,6 +2,7 @@ const wpmain = new Vue({
     el: '#app',
     data: {
         indexContact: 0,
+        text: '',
         contacts: [
             {
                 name: "Michele",
@@ -173,13 +174,13 @@ const wpmain = new Vue({
 
     },
     methods: {
-        getLastMessage: function (index) {
+        getLastMessage (index) {
             let lastMessage = this.contacts[index].messages.length - 1;
             let lastMessageText = this.contacts[index].messages[lastMessage].text;
 
             return lastMessageText;
         },
-        getLastDate: function (index) {
+        getLastDate (index) {
             let lastMessage = this.contacts[index].messages.length - 1;
             let lastMessageDate = this.contacts[index].messages[lastMessage].date;
 
@@ -187,6 +188,23 @@ const wpmain = new Vue({
         },
         changeContact(index) {
             this.indexContact = index;
+        },
+        getText () {
+            if (this.text != '') {
+                this.contacts[this.indexContact].messages.push({
+                    text: this.text,
+                    status: "sent",
+                });
+            }
+            this.text = '';
+
+            setTimeout(() => {
+                this.contacts[this.indexContact].messages.push({
+                    text: 'ok',
+                    status: "received",
+                }
+                );
+            }, 1000);
         }
     },
 });

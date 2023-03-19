@@ -49,7 +49,7 @@
                     <div class="friend-col">
                         <div class="friend-col-left">
                             <div class="avatar">
-                                <img :src="contacts[indexContact].avatar">
+                                <img :src="`./img/avatar${contacts[indexContact].avatar}.jpg`">
                             </div>
                             <div class="friend-name">
                                 <p class="name">{{contacts[indexContact].name}}</p>
@@ -114,7 +114,7 @@
                                 <i class="far fa-smile"></i>
                             </div>
 
-                            <input class="chat-input-text" type="text" placeholder="Scrivi un messaggio">
+                            <input  @keyup.enter="getText()" v-model="text"  class="chat-input-text" type="text" placeholder="Scrivi un messaggio">
 
                             <div class="microphone">
                                 <i class="fas fa-microphone"></i>
