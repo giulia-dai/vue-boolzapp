@@ -85,9 +85,9 @@
                         </div>
 
                         <div class="messages-to">
-                            <div v-for="(contact, index) in searchMyFriends()" class="message-to-friend" @click= "changeContact(index)">
+                            <div v-for="(contact, index) in searchMyFriends()"  class="message-to-friend" @click= "changeContact(index)">
                                 <div class="friend-avatar">
-                                    <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                                    <img :src="`img/avatar${contact.avatar}.jpg`">
                                 </div>
                                 <div class="friend-text">
                                     <p class="name">{{ contact.name }}</p>

@@ -213,7 +213,7 @@ const wpmain = new Vue({
                     (element.name).toLowerCase().includes(this.searchBar.toLowerCase())
                 );
             } else {
-                
+                return this.contacts;
             }
         }
     },
