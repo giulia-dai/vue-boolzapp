@@ -186,6 +186,7 @@
     height: calc(100% - 100px);
     background-color: #FFFFFF;
     min-height: 575px;
+    overflow-y: scroll;
 }
 
 .message-to-friend {
@@ -239,6 +240,7 @@
     display: flex;
     flex-direction: column;
     padding: 15px 10px ;
+    overflow-y: scroll;
 }
 
 .chat-input {
