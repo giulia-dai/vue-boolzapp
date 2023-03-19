@@ -31,7 +31,7 @@
                     <div class="user-col">
                         <div class="user-col-left">
                             <div class="avatar">
-                                <img src="img/avatar_io.jpg" alt=" ">
+                                <img src="img/avatar_io.jpg" alt="immagine profilo ">
                             </div>
                             <div class="user-name">
                                 <p class="name">Giulia (tu)</p>
@@ -81,11 +81,11 @@
 
                         <div class="search">
                             <label for="searchbox"><i class="fas fa-search"></i></label>
-                            <input name="searchbox" type="text" class="search-box" placeholder="Cerca o inizia una nuova chat">
+                            <input v-model="searchBar" @keyup="searchMyFriends" name="searchbox" type="text" class="search-box" placeholder="Cerca o inizia una nuova chat">
                         </div>
 
                         <div class="messages-to">
-                            <div v-for="(contact, index) in contacts" class="message-to-friend" @click= "changeContact(index)">
+                            <div v-for="(contact, index) in searchMyFriends()" class="message-to-friend" @click= "changeContact(index)">
                                 <div class="friend-avatar">
                                     <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                                 </div>

@@ -3,6 +3,7 @@ const wpmain = new Vue({
     data: {
         indexContact: 0,
         text: '',
+        searchBar: '',
         contacts: [
             {
                 name: "Michele",
@@ -174,13 +175,13 @@ const wpmain = new Vue({
 
     },
     methods: {
-        getLastMessage (index) {
+        getLastMessage(index) {
             let lastMessage = this.contacts[index].messages.length - 1;
             let lastMessageText = this.contacts[index].messages[lastMessage].text;
 
             return lastMessageText;
         },
-        getLastDate (index) {
+        getLastDate(index) {
             let lastMessage = this.contacts[index].messages.length - 1;
             let lastMessageDate = this.contacts[index].messages[lastMessage].date;
 
@@ -189,7 +190,7 @@ const wpmain = new Vue({
         changeContact(index) {
             this.indexContact = index;
         },
-        getText () {
+        getText() {
             if (this.text != '') {
                 this.contacts[this.indexContact].messages.push({
                     text: this.text,
@@ -205,6 +206,15 @@ const wpmain = new Vue({
                 }
                 );
             }, 1000);
+        },
+        searchMyFriends() {
+            if (this.searchBar !== '') {
+                return this.contacts.filter(element =>
+                    (element.name).toLowerCase().includes(this.searchBar.toLowerCase())
+                );
+            } else {
+                
+            }
         }
     },
 });
