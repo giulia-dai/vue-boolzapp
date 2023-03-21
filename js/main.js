@@ -1,6 +1,4 @@
 const DateTime = luxon.DateTime;
-const dataOra = (DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT));
-console.log(dataOra);
 
 const wpmain = new Vue({
     el: '#app',
@@ -200,6 +198,7 @@ const wpmain = new Vue({
                 this.contacts[this.indexContact].messages.push({
                     text: this.text,
                     status: "sent",
+                    date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)
                 });
             }
             this.text = '';
@@ -208,6 +207,7 @@ const wpmain = new Vue({
                 this.contacts[this.indexContact].messages.push({
                     text: 'ok',
                     status: "received",
+                    date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)
                 }
                 );
             }, 1000);
